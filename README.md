@@ -1,14 +1,35 @@
-# Welcome to your CDK TypeScript project
+# AWS EVM-based Blockchain Batch Transaction Handler
 
-This is a blank project for CDK development with TypeScript.
+[Click me for more information about this repository](https://dev.to/aws-builders/how-to-send-large-batch-transaction-to-evm-based-blockchain-network-using-aws-serverless-service-2akn)
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+## Setup
 
-## Useful commands
+1. Install dependencies
 
-* `npm run build`   compile typescript to js
-* `npm run watch`   watch for changes and compile
-* `npm run test`    perform the jest unit tests
-* `cdk deploy`      deploy this stack to your default AWS account/region
-* `cdk diff`        compare deployed stack with current state
-* `cdk synth`       emits the synthesized CloudFormation template
+   ```bash
+   npm install # Install CDK dependencies
+   cd contracts && npm install # Install hardhat dependencies
+   ```
+
+2. Deploy Smart Contract
+
+   ```bash
+   cd contracts
+   cp .env.example .env # Copy environment variables example to the real one
+   vim .env # Edit the environment variables
+   npx cdk deploy # Deploy the contract to Goerli and remember to copy the address
+   ```
+
+3. Update the smart contract address in the CDK file
+4. Deploy the CDK stack
+
+   ```bash
+    npx cdk deploy
+   ```
+
+5. Update the private key in secrets manager
+6. Test the large batch minting process
+
+   ```bash
+    npx ts-node src/put-message.ts
+   ```
